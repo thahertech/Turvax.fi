@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
-import Image from "next/image";
-import heroImg from "./texture-bg.jpg";
+
+
 export default function Home() {
   return (
     <div>

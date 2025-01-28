@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "@/components/Header";
 import "../app/globals.css";
-import Head from "next/head";
 
 export default function HowItWorks() {
   useEffect(() => {
