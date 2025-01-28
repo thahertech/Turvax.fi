@@ -1,100 +1,119 @@
 import Image from "next/image";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+          <Header />
+
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
+        <h2>
+          Kilpailuta hinta
+        </h2>
+        {/* <Image
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
           width={180}
           height={38}
           priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        /> */}
+       
+       <form className="flex flex-col gap-6 sm:w-64">
+  {/* Location */}
+  <div className="flex flex-col">
+    <label htmlFor="location" className="text-sm font-semibold">
+      Sijainti
+    </label>
+    <input
+      type="text"
+      id="location"
+      name="location"
+      className="mt-2 p-2 border border-gray-300 rounded-lg"
+      placeholder="Esim. Helsinki, Tampere"
+      required
+    />
+  </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  {/* Size of Space */}
+  <div className="flex flex-col color-black">
+    <label htmlFor="spaceSize" className="text-sm font-semibold">
+      Tilan koko (m²)
+    </label>
+    <select
+      id="spaceSize"
+      name="spaceSize"
+      className="mt-2 p-2 border border-gray-300 rounded-lg"
+      required
+    >
+      <option value="small">Alle 50 m²</option>
+      <option value="medium">51-150 m²</option>
+      <option value="large">Yli 150 m²</option>
+    </select>
+  </div>
+
+  {/* Features */}
+  <div className="flex flex-col">
+    <label className="text-sm font-semibold">Halutut ominaisuudet</label>
+    <div className="mt-2">
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          id="motionDetection"
+          name="features"
+          value="motionDetection"
+          className="h-5 w-5"
+        />
+        <label htmlFor="motionDetection" className="text-sm">Liikeilmaisin</label>
+      </div>
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          id="remoteControl"
+          name="features"
+          value="remoteControl"
+          className="h-5 w-5"
+        />
+        <label htmlFor="remoteControl" className="text-sm">Etäohjaus</label>
+      </div>
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          id="nightVision"
+          name="features"
+          value="nightVision"
+          className="h-5 w-5"
+        />
+        <label htmlFor="nightVision" className="text-sm">Yökuvaus</label>
+      </div>
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          id="smartHomeIntegration"
+          name="features"
+          value="smartHomeIntegration"
+          className="h-5 w-5"
+        />
+        <label htmlFor="smartHomeIntegration" className="text-sm">Älykoti-integraatio</label>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  {/* Submit Button */}
+  <button
+    type="submit"
+    className="w-full mt-4 bg-foreground text-background py-2 rounded-full hover:bg-[#383838] transition-colors"
+  >
+    Kilpailuta hinnat
+  </button>
+</form>
+      
       </main>
+
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+     
       </footer>
     </div>
   );
