@@ -1,6 +1,6 @@
-'use client'; // Marking the file as a client-side component
+'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface Suggestion {
   display_name: string;
