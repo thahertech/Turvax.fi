@@ -1,101 +1,142 @@
-import Image from "next/image";
+import Header from "@/components/Header";
+import LocationForm from "@/components/locationSuggestions";
+import { FiInfo } from 'react-icons/fi'; // Import info icon
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] overflow-none">
+      <Header />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <div className="w-full hero-content">
+          <h3>Hälytysjärjestelmien kilpailutus</h3>
         </div>
+
+        <h1>Kilpailuta hinta</h1>
+
+        <form className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:w-256">
+         <LocationForm/>
+
+          {/* Size of Space */}
+          <div className="flex flex-col">
+            <label htmlFor="spaceSize" className="text-sm font-semibold">
+              Tilan koko (m²)
+            </label>
+            <select
+              id="spaceSize"
+              name="spaceSize"
+              className="mt-2 p-2 border border-gray-300 text-black rounded-lg"
+              required
+            >
+              <option value="small">Alle 50 m²</option>
+              <option value="medium">51-150 m²</option>
+              <option value="large">Yli 150 m²</option>
+            </select>
+          </div>
+
+          {/* Timing of Service */}
+          <div className="flex flex-col">
+            <label htmlFor="urgencyTime" className="text-sm font-semibold flex items-center flex-row">
+              Ajankohta
+              <span className="ml-2 cursor-pointer">
+                <FiInfo title="Palvelun ajankohdan arvio." />
+              </span>
+            </label>
+            <select
+              id="urgencyTime"
+              name="urgencyTime"
+              className="mt-2 p-2 border border-gray-300 text-black rounded-lg"
+              required
+            >
+              <option value="3months">3 kk</option>
+              <option value="6months">6 kk</option>
+              <option value="1year">1 vuosi</option>
+              <option value="other">Muu</option>
+            </select>
+          </div>
+
+          {/* Features */}
+          <div className="flex flex-col sm:col-span-2">
+            <label className="text-sm font-semibold flex items-center flex-row">
+              Ominaisuudet
+              <span className="ml-2 cursor-pointer">
+                <FiInfo title="Select the features that you think are important for your service." />
+              </span>
+            </label>
+            <div className="mt-2">
+              {[
+                'Liikeilmaisin', 
+                'Etäohjaus', 
+                'Paloturva', 
+                'Vesivuototurva', 
+                'Yökuvaus', 
+                'Älykoti-integraatio'
+              ].map((feature, index) => (
+                <div key={index} className="flex items-center gap-2 mb-2">
+                  <input
+                    type="checkbox"
+                    id={feature}
+                    name="features"
+                    value={feature}
+                    className="h-5 w-5"
+                  />
+                  <label htmlFor={feature} className="text-sm">{feature}</label>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact Information */}
+          <div className="text-black flex col-span-3 mt-12">
+          <input
+              type="name"
+              id="name"
+              name="name"
+              placeholder="Nimi"
+              className="mt-2 p-2 w-1/3 text-gray-800 border border-gray-300 rounded-lg"
+            />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Sähköposti"
+              className="mt-2 ml-10 p-2 w-1/3 text-gray-800 border border-gray-300 rounded-lg"
+            />
+
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              placeholder="Puhelinnumero"
+              className="mt-2 p-2 ml-10 w-4/3 text-gray-800 border border-gray-300 rounded-lg"
+            />
+          </div>
+
+          {/* Free Text (Comments) */}
+          <div className="flex flex-col text-black col-span-3 mt-12">
+            <label htmlFor="comments" className="text-sm text-white font-semibold">
+              Vapaa Sana
+            </label>
+            <textarea
+              id="comments"
+              name="comments"
+              rows={4}
+              className="mt-2 p-2 text-gray-800 border border-gray-300 rounded-lg"
+              placeholder="Kirjoita tarkempia tietoja..."
+            ></textarea>
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full mt-4 bg-foreground text-background py-2 rounded-full hover:bg-[#383838] transition-colors sm:col-span-3"
+            >
+            Kilpailuta hinnat
+          </button>
+        </form>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
     </div>
   );
 }
