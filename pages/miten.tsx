@@ -45,7 +45,7 @@ export default function HowItWorks() {
           transformStyle: "preserve-3d",
         }}
       />
-      
+
       <main className="relative z-10 flex flex-col gap-8 row-start-2 items-center sm:items-start max-w-screen-lg mx-auto p-8 sm:p-20">
         <h2 className="text-3xl font-semibold text-center">Miten Se Toimii?</h2>
         <p className="text-lg text-center max-w-3xl mt-4 leading-relaxed">

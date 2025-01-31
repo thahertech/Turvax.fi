@@ -280,7 +280,7 @@ export default function Home() {
       type="text"
       id="numero"
       name="numero"
-      placeholder="puhelinnumero"
+      placeholder="Puhelinnumero"
       className="mt-2 p-2 ml-10 w-4/3 text-gray-800 border border-gray-300 rounded-lg"
 
     />
