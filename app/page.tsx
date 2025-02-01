@@ -6,6 +6,8 @@ import { FiInfo } from "react-icons/fi";
 import { FormEvent } from "react";
 import { supabase } from '../lib/supabaseClient';
 import { getBestCompanies } from "@/components/serviceComparison";
+import ConsentScript from "@/lib/ConsentScript";
+import Script from "next/script";
 
 export default function Home() {
   const handleSubmit = async (event: FormEvent) => {
@@ -64,9 +66,29 @@ export default function Home() {
   };
 
   return (
+    <>
+  <ConsentScript />
+
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-8LRWN45FQ4"
+        async
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+      >
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-8LRWN45FQ4');
+        `}
+      </Script>
+
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] overflow-none">
       <Header />
-
+  
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="w-full hero-content">
           <h3>Hälytysjärjestelmien kilpailutus</h3>
@@ -155,5 +177,6 @@ export default function Home() {
 
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
     </div>
+    </>
   );
 }

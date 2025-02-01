@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const Header: React.FC = () => {
   return (
+    
     <header className="bg-white-200 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold">
