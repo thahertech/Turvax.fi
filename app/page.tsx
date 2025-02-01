@@ -45,7 +45,7 @@ export default function Home() {
       const savedRequestData = savedRequest[0];
 
       const criteria = {
-        location: savedRequestData.name,
+        location: savedRequestData.location,
         spaceSize: savedRequestData.spaceSize,
         houseType: savedRequestData.houseType,
         urgency: savedRequestData.urgencyTime,
