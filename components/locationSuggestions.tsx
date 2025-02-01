@@ -11,10 +11,9 @@ const LocationForm = () => {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // Fetch location suggestions from the Nominatim API
   const fetchSuggestions = async (query: string): Promise<void> => {
     if (query.length < 3) {
-      setSuggestions([]); // Don't fetch if the query is too short
+      setSuggestions([]);
       return;
     }
 
