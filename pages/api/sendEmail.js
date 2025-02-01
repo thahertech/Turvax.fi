@@ -1,22 +1,28 @@
-import sendgrid from '@sendgrid/mail';
+// // pages/api/sendEmail.js
+// import sgMail from '@sendgrid/mail';
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY); // Ensure you have the SendGrid API key set in your environment variables
 
-export default async function handler(req, res) {
-  const { subject, body, recipientEmail } = req.body;
+// export default async function handler(req, res) {
+//   if (req.method === 'POST') {
+//     const { to, subject, text, html } = req.body;
 
-  try {
-    await sendgrid.send({
-      to: recipientEmail,
-      from: 'info@turvax.fi',
-      subject: subject,
-      text: body,
-      html: `<p>${body}</p>`,
-    });
+//     const msg = {
+//       to,
+//       from: 'your-email@example.com', // Your SendGrid verified sender email
+//       subject,
+//       text,
+//       html,
+//     };
 
-    return res.status(200).json({ message: 'Email sent successfully' });
-  } catch (error) {
-    console.error('Error sending email:', error);
-    return res.status(500).json({ message: 'Error sending email' });
-  }
-}
+//     try {
+//       await sgMail.send(msg);
+//       res.status(200).json({ success: true });
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ error: 'Error sending email' });
+//     }
+//   } else {
+//     res.status(405).json({ error: 'Method Not Allowed' });
+//   }
+// }

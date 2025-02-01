@@ -8,12 +8,12 @@ const supabase = createClient(
 interface Company {
   id: string;
   name: string;
-  service_areas: string[];
+  location: string;
   // min_space_size: number;
   // max_space_size: number;
   // supported_house_types: string[];
   // available_dates: string[];
-  supported_features: string[];
+  features: string[];
   score?: number;
 }
 
@@ -33,22 +33,22 @@ export async function getBestCompanies(criteria: MatchCriteria): Promise<Company
     if (error) throw error;
 
     let matchedCompanies: Company[] = (data || []).filter((company) =>
-      company.service_areas.includes(criteria.location) &&
+      company.location.includes(criteria.location) &&
       // company.min_space_size <= criteria.spaceSize &&
       // company.max_space_size >= criteria.spaceSize &&
       // company.supported_house_types.includes(criteria.houseType) &&
       // company.available_dates.includes(criteria.urgency) &&
-      criteria.features.every(feature => company.supported_features.includes(feature))
+      criteria.features.every(feature => company.features.includes(feature))
     );
 
     matchedCompanies = matchedCompanies.map((company) => ({
       ...company,
       score: (
-        (company.service_areas.includes(criteria.location) ? 3 : 0) +
+        (company.location.includes(criteria.location) ? 3 : 0) +
         // (company.min_space_size <= criteria.spaceSize && company.max_space_size >= criteria.spaceSize ? 2 : 0) +
         // (company.supported_house_types.includes(criteria.houseType) ? 2 : 0) +
         // (company.available_dates.includes(criteria.urgency) ? 1 : 0) +
-        criteria.features.filter(feature => company.supported_features.includes(feature)).length
+        criteria.features.filter(feature => company.features.includes(feature)).length
       ),
     }));
 
