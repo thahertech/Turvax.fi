@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.turvax.fi/</loc>
+    <lastmod>2025-02-01</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Us -->
+  <url>
+    <loc>https://www.turvax.fi/about</loc>
+    <lastmod>2025-02-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+<!-- FAQ -->
+  <url>
+    <loc>https://www.turvax.fi/faq</loc>
+    <lastmod>2025-02-01</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
