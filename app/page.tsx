@@ -8,7 +8,8 @@ import { supabase } from '../lib/supabaseClient';
 import { getBestCompanies } from "@/components/serviceComparison";
 import ConsentScript from "@/lib/ConsentScript";
 import Script from "next/script";
-
+import FeatureSelection from "@/components/featureComponent";
+import ServiceComponent from '@/components/serviceComponent';
 export default function Home() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -89,13 +90,16 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] overflow-none">
       <Header />
   
+    
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <div className="flex flex-row justify-center">
+        <ServiceComponent />
+      </div>
         <div className="w-full hero-content">
-          <h3>Hälytysjärjestelmien kilpailutus</h3>
         </div>
 
-        <h1>Kilpailuta hinta</h1>
 
+  
         <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:w-256">
           <LocationForm />
 
@@ -125,35 +129,7 @@ export default function Home() {
             </select>
           </div>
 
-                    <div className="flex flex-col sm:col-span-2">
-            <label className="text-sm font-semibold flex items-center flex-row">
-              Ominaisuudet
-              <span className="ml-2 cursor-pointer">
-                <FiInfo title="Select the features that you think are important for your service." />
-              </span>
-            </label>
-            <div className="mt-2">
-              {[
-                'Liikeilmaisin', 
-                'Etäohjaus', 
-                'Paloturva', 
-                'Vesivuototurva', 
-                'Yökuvaus', 
-                'Älykoti-integraatio'
-              ].map((feature, index) => (
-                <div key={index} className="flex items-center gap-2 mb-2">
-                  <input
-                    type="checkbox"
-                    id={feature}
-                    name="features"
-                    value={feature}
-                    className="h-5 w-5"
-                  />
-                  <label htmlFor={feature} className="text-sm">{feature}</label>
-                </div>
-              ))}
-            </div>
-          </div>
+         <FeatureSelection />
 
 
           <div className="text-black flex col-span-3 mt-12">
