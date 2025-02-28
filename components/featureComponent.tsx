@@ -2,17 +2,27 @@ import { FiInfo } from "react-icons/fi";
 
 export default function FeatureSelection() {
   const features = [
-    "CCTV", 
-    "Hälytysjärjestelmät",
-    "24/7 tuki", 
-    "Videovalvonta", 
-    "Murtohälyttimet", 
-    "24/7 valvonta", 
-    "Älykoti-integraatio", 
-    "Palo- ja häkävaroitus", 
-    "24h hälytysvalvonta", 
+    "24/7 valvontakeskus",
+    "Ammattimainen asennus",
+    "Räätälöidyt turvallisuusratkaisut",
+    "Ilmainen huolto",
+    "Käyttäjäystävällinen mobiilisovellus",
+    "Elinikäinen tuotetakuu",
+    "Kokenut turvallisuushenkilöstö",
+    "Integroitu turvatekniikka",
+    "Älykoti-integraatio",
+    "Murtohälyttimet",
+    "Palo- ja häkävaroitus",
+    "Vesivuotovaroitus",
+    "Henkilöturva",
     "Turvajärjestelmien asennus",
-    "IP-pohjaiset videovalvontajärjestelmät", 
+    "IP-pohjaiset videovalvontajärjestelmät",
+    "Etähallinta",
+    "Valvontapalvelut",
+    "CCTV",
+    "Hälytysjärjestelmät",
+    "24/7 tuki",
+    "24h hälytysvalvonta",
   ];
 
   return (
