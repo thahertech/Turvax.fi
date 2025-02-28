@@ -1,7 +1,6 @@
 "use client";
 
 import Header from "@/components/Header";
-import { FiInfo } from "react-icons/fi";
 import { FormEvent } from "react";
 import { supabase } from '../lib/supabaseClient';
 import { getBestCompanies } from "@/components/serviceComparison";
