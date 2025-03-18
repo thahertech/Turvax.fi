@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiInfo } from "react-icons/fi";
+// import { FiInfo } from "react-icons/fi";
 
 interface ServiceComponentProps {
   onSelect: () => void;  // Add the onSelect prop to the component
@@ -15,7 +15,6 @@ export default function ServiceSelection({ onSelect }: ServiceComponentProps) {
         ? prev.filter((s) => s !== service)
         : [...prev, service];
 
-      // Call onSelect after updating the state
       onSelect();
 
       return newSelectedServices;
