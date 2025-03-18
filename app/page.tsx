@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
+import { useState } from "react";
 import { FormEvent } from "react";
 import { supabase } from '../lib/supabaseClient';
 import { getBestCompanies } from "@/components/serviceComparison";
@@ -16,6 +17,12 @@ import CommentsSection from '@/components/commentsSection';
 
 
 export default function Home() {
+  const [isServiceSelected, setIsServiceSelected] = useState(false);
+
+  const handleServiceSelection = () => {
+    setIsServiceSelected(true);
+  };
+
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
@@ -97,31 +104,30 @@ export default function Home() {
   
     
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-      <div className="flex flex-row justify-center">
-        <ServiceComponent />
+      <div className="flex flex-row justify-center m-auto mb-8">
+      <ServiceComponent onSelect={handleServiceSelection} />
       </div>
-        <div className="w-full hero-content">
-        </div>
+      {isServiceSelected && (
+            <div className="w-full hero-content">
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:w-256">
+                <LocationForm />
+                <SpaceSizeSelection />
+                <UrgencyTimeSelection />
+                <FeatureSelection />
+                <ContactInfo />
+                <CommentsSection />
 
+                <button type="submit" 
+                  className="w-full mt-4 bg-foreground text-background py-2 rounded-full hover:bg-[#383838] transition-colors sm:col-span-3">
+                  Kilpailuta hinnat
+                </button>
+              </form>
+            </div>
+          )}
+        </main>
 
-  
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:w-256">
-        <LocationForm />
-        <SpaceSizeSelection />
-        <UrgencyTimeSelection />
-        <FeatureSelection />
-        <ContactInfo />
-        <CommentsSection />
-
-          <button type="submit" 
-          className="w-full mt-4 bg-foreground text-background py-2 rounded-full hover:bg-[#383838] transition-colors sm:col-span-3">
-            Kilpailuta hinnat
-          </button>
-        </form>
-      </main>
-
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
-    </div>
+        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
+      </div>
     </>
   );
 }
