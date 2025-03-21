@@ -2,7 +2,7 @@ import { useState } from "react";
 // import { FiInfo } from "react-icons/fi";
 
 interface ServiceComponentProps {
-  onSelect: () => void;  // Add the onSelect prop to the component
+  onSelect: () => void;
 }
 
 export default function ServiceSelection({ onSelect }: ServiceComponentProps) {
@@ -25,9 +25,7 @@ export default function ServiceSelection({ onSelect }: ServiceComponentProps) {
     <div>
       <label className="text-xl font-semibold flex items-center">
         Mistä palvelusta olet kiinnostunut?
-        {/* <span className="ml-2 cursor-pointer">
-          <FiInfo title="Valintojen perusteella voit valita ominaisuudet kilpailutukselle" />
-        </span> */}
+
       </label>
       <div className="mt-2 flex gap-2 flex-wrap justify-center m-auto">
         {services.map((service) => (
