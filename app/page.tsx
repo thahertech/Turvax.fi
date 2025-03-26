@@ -18,7 +18,11 @@ import CommentsSection from '@/components/commentsSection';
 
 export default function Home() {
   const [isServiceSelected, setIsServiceSelected] = useState(false);
+  const [isFeatureSelected, setIsFeatureSelected] = useState([]);
 
+  const handleFeatureSelect = (selectedFeatures: string[]) => {
+    setIsFeatureSelected(selectedFeatures);
+  };
   const handleServiceSelection = () => {
     setIsServiceSelected(true);
   };
@@ -113,7 +117,7 @@ export default function Home() {
                 <LocationForm />
                 <SpaceSizeSelection />
                 <UrgencyTimeSelection />
-                <FeatureSelection />
+                <FeatureSelection onSelect={handleFeatureSelect} />
                 <ContactInfo />
                 <CommentsSection />
 
