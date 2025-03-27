@@ -36,9 +36,9 @@ export default function FeatureSelection({ onSelect }: FeatureSelectionProps) {
       </span>
     </label>
     
-    <div className="mt-2 grid grid-cols-3 w-[800px] gap-3">
+    <div className="mt-2 grid grid-cols-3 w-[1000px] gap-3">
       {features.map(({ name, icon }, index) => (
-        <div key={index} className="flex items-center justify-center gap-20 mb-2 p-3 border rounded-lg hover:bg-gray-100 transition">
+        <div key={index} className="flex items-center justify-center gap-20 mb-2 p-3 border w-[300px] rounded-lg hover:bg-gray-100 transition">
           <input
             type="checkbox"
             id={name}
