@@ -18,6 +18,13 @@ import CommentsSection from '@/components/commentsSection';
 
 export default function Home() {
   const [isServiceSelected, setIsServiceSelected] = useState(false);
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+
+  const handleFeatureSelect = (feature: string, checked: boolean) => {
+    setSelectedFeatures((prev) =>
+      checked ? [...prev, feature] : prev.filter((f) => f !== feature)
+    );
+  };
 
   const handleServiceSelection = () => {
     setIsServiceSelected(true);
@@ -101,8 +108,7 @@ export default function Home() {
 
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] overflow-none">
       <Header />
-  
-    
+
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
       <div className="flex flex-row justify-center m-auto mb-8">
       <ServiceComponent onSelect={handleServiceSelection} />
@@ -113,7 +119,7 @@ export default function Home() {
                 <LocationForm />
                 <SpaceSizeSelection />
                 <UrgencyTimeSelection />
-                <FeatureSelection />
+                <FeatureSelection onSelect={handleFeatureSelect} />
                 <ContactInfo />
                 <CommentsSection />
 
@@ -122,6 +128,9 @@ export default function Home() {
                   Kilpailuta hinnat
                 </button>
               </form>
+              {selectedFeatures.map((feature, index) => (
+            <li key={index} className="text-sm">{feature}</li>
+          ))}
             </div>
           )}
         </main>
