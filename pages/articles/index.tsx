@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Articles = () => {
@@ -5,8 +6,8 @@ const Articles = () => {
     <div>
       <h1>Articles</h1>
       <ul>
-        <li><a href="/articles/first-article">First Article</a></li>
-        <li><a href="/articles/second-article">Second Article</a></li>
+        <li><Link href="/articles/first-article">First Article</Link></li>
+        <li><Link href="/articles/second-article">Second Article</Link></li>
       </ul>
     </div>
   );

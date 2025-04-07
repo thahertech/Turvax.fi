@@ -8,7 +8,6 @@ const Article = () => {
   return (
     <div>
       <h1>Article: {slug}</h1>
-      <p>Here will be the content of the article with the slug "{slug}".</p>
     </div>
   );
 };
