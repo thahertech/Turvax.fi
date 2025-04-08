@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
+import Head from "next/head";
 import { useState } from "react";
 import { FormEvent } from "react";
 import { supabase } from '../lib/supabaseClient';
@@ -14,7 +15,6 @@ import SpaceSizeSelection from '@/components/spaceSizeSelection';
 import UrgencyTimeSelection from '@/components/urgencyTime';
 import ContactInfo from '@/components/contactInfo';
 import CommentsSection from '@/components/commentsSection';
-
 
 export default function Home() {
   const [isServiceSelected, setIsServiceSelected] = useState(false);
@@ -56,7 +56,6 @@ export default function Home() {
         }])
         .select();
 
-        console.log(savedRequest);
       if (error) {
         console.error("Error saving request: ", error);
         return;
@@ -79,7 +78,6 @@ export default function Home() {
         return;
       }
 
-     
     } catch (error) {
       console.error("An error occurred:", error);
     }
@@ -87,17 +85,22 @@ export default function Home() {
 
   return (
     <>
-  <ConsentScript />
-
+    <Head>
+      <title>Vertaa kotiturvapalvelun hinnat – Kilpailuta helposti | Turvapalvelut</title>
+      <meta name="description" content="Kilpailuta turvapalvelut helposti ja löydä parhaat tarjoukset alueellasi. Säästä aikaa ja rahaa vertailemalla palveluntarjoajia yhdellä lomakkeella." />
+      <meta name="keywords" content="turvapalvelu, kotiturva, turvapalvelut, kilpailuta kotiturva, kotiturvatarjous, kotiturva vertailu, halpa kotiturva, koti turvapalvelu" />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:title" content="Vertaa turvapalvelun hinnat - Kilpailuta helposti | kotiturvapalvelu" />
+      <meta property="og:description" content="Löydä paras turvapalvelu alueellasi yhdellä lomakkeella. Kilpailuta ja säästä!" />
+      <meta property="og:type" content="website" />
+    </Head>
+      <ConsentScript />
       <Script
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-8LRWN45FQ4"
         async
       />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-      >
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -106,16 +109,17 @@ export default function Home() {
         `}
       </Script>
 
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] overflow-none">
-      <Header />
+      <div className="flex flex-col min-h-screen items-center p-4 sm:p-8 lg:p-16 gap-8">
+        <Header />
 
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-      <div className="flex flex-row justify-center m-auto mb-8">
-      <ServiceComponent onSelect={handleServiceSelection} />
-      </div>
-      {isServiceSelected && (
-            <div className="w-full hero-content">
-              <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:w-256">
+        <main className="w-full flex flex-col items-center">
+          <div className="flex justify-center mb-6 w-full">
+            <ServiceComponent onSelect={handleServiceSelection} />
+          </div>
+
+          {isServiceSelected && (
+            <div className="w-full max-w-full">
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <LocationForm />
                 <SpaceSizeSelection />
                 <UrgencyTimeSelection />
@@ -123,19 +127,26 @@ export default function Home() {
                 <ContactInfo />
                 <CommentsSection />
 
-                <button type="submit" 
-                  className="w-full mt-4 bg-foreground text-background py-2 rounded-full hover:bg-[#383838] transition-colors sm:col-span-3">
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto px-4 py-2 bg-foreground text-background rounded-full hover:bg-[#383838] transition-colors"
+                >
                   Kilpailuta hinnat
                 </button>
               </form>
-              {selectedFeatures.map((feature, index) => (
-            <li key={index} className="text-sm">{feature}</li>
-          ))}
+
+              {selectedFeatures.length > 0 && (
+                <ul className="mt-4 text-sm text-center">
+                  {selectedFeatures.map((feature, index) => (
+                    <li key={index}>{feature}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
         </main>
 
-        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
+        <footer className="flex flex-wrap gap-4 justify-center w-full mt-6"></footer>
       </div>
     </>
   );
