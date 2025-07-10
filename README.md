@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ Turvax
 
-## Getting Started
+**Smart Home Security Provider Matcher**  
+Turvax is an intelligent matching algorithm that helps users quickly find the most suitable home security service providers based on their preferences. Whether it's alarm systems, monitoring, or full-service security solutions — Turvax ensures the right fit, fast.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 What It Does
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Turvax takes the input from a user-facing form — such as:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 🏡 Property type (apartment, detached house, etc.)
+- 📍 Location
+- 💰 Budget
+- 🔐 Desired services (alarms, surveillance, monitoring, etc.)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+...and runs it through a custom scoring algorithm that compares it against a database of providers. The result is a ranked list of the best-matched home security services for the user.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 💡 Why It Exists
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Finding the right security provider is confusing and time-consuming. Turvax automates that decision with an algorithm that understands user needs and maps them to available options — instantly.
+This is a tool that was built as a prototype to provide security companies a tool which can be utilised for sales and overall lead generation. After completing the MVP for this,
+security companies are approached to add to the pool of companies and the tool is marketed to consumers looking for security services online.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠 Tech Overview
 
-## Deploy on Vercel
+| Layer         | Description                                           |
+|---------------|-------------------------------------------------------|
+| 🧠 Algorithm   | Custom logic that weights and ranks providers         |
+| 📄 Data        | JSON or DB-driven list of providers & attributes      |
+| 🖥 Frontend    | Input form (integrates easily with React, Next.js, etc.) |
+| ⚙️ Extensibility | Add new providers or rules in seconds                |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
